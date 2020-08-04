@@ -1,13 +1,13 @@
-package com.minhaescola.escola;
+package br.com.minhaescola;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EscolaApplication {
+public class MinhaescolaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EscolaApplication.class, args);
+		SpringApplication.run(MinhaescolaApplication.class, args);
 	}
 
 }

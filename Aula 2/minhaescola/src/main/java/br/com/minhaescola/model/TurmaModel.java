@@ -1,4 +1,4 @@
-package com.minhaescola.escola.model;
+package br.com.minhaescola.model;
 
 import java.util.List;
 
@@ -9,18 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "tb_turma")
-public class Turma {
+public class TurmaModel {
 	
-	// diz que é uma primary key e já faz o auto_increment
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@NotNull
 	private String turma;
@@ -28,15 +27,15 @@ public class Turma {
 	@NotNull
 	private boolean ativo;
 	
-	@OneToMany (mappedBy = "turma", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties ("turma")
-	private List<Aluno> aluno;
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.PERSIST)
+	@JsonIgnoreProperties("turma")
+	private List<AlunoModel> aluno;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -54,5 +53,13 @@ public class Turma {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public List<AlunoModel> getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(List<AlunoModel> aluno) {
+		this.aluno = aluno;
 	}
 }

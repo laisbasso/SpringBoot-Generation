@@ -1,4 +1,4 @@
-package com.minhaescola.escola.model;
+package br.com.minhaescola.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_aluno")
-public class Aluno {
-	
+public class AlunoModel {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -26,7 +26,7 @@ public class Aluno {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("aluno")
-	private Turma turma;
+	private TurmaModel turma;
 
 	public long getId() {
 		return id;
@@ -50,5 +50,13 @@ public class Aluno {
 
 	public void setMatriculado(boolean matriculado) {
 		this.matriculado = matriculado;
-	}	
+	}
+
+	public TurmaModel getTurma() {
+		return turma;
+	}
+
+	public void setTurma(TurmaModel turma) {
+		this.turma = turma;
+	}
 }

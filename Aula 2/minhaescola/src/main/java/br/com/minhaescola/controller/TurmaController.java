@@ -1,4 +1,4 @@
-package com.minhaescola.escola.controller;
+package br.com.minhaescola.controller;
 
 import java.util.List;
 
@@ -15,42 +15,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.minhaescola.escola.model.Turma;
-import com.minhaescola.escola.repository.TurmaRepository;
+import br.com.minhaescola.model.TurmaModel;
+import br.com.minhaescola.repository.TurmaRepository;
 
 @RestController
-@RequestMapping("/turmas")
+@RequestMapping("/turma")
 @CrossOrigin("*")
 public class TurmaController {
 	
-	// o controller vai conseguir acessar todos os serviços da interface repository
 	@Autowired
-	private TurmaRepository repository;	
+	private TurmaRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Turma>> findAllTurma(){
+	public ResponseEntity<List<TurmaModel>> buscarTurmas(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Turma> findByIDTurma(@PathVariable long id){
+	public ResponseEntity<TurmaModel> buscarId(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping
-	public ResponseEntity<Turma> postTurma(@RequestBody Turma turma){
+	public ResponseEntity<TurmaModel> postarTurma(@RequestBody TurmaModel turma){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(turma));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Turma> putTurma(@RequestBody Turma turma){
+	public ResponseEntity<TurmaModel> editarTurma(@RequestBody TurmaModel turma){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(turma));
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteTurma(@PathVariable long id){
+	public void deletarTurma(@PathVariable long id) {
 		repository.deleteById(id);
 	}
 }
