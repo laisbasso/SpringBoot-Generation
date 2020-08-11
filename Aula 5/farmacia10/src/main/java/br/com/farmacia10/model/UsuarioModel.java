@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -17,15 +16,12 @@ public class UsuarioModel {
 	private long id;
 	
 	@NotNull
-	@Size(min = 3, max = 30)
 	private String nome;
 	
 	@NotNull
-	@Size(min = 5, max = 10)
 	private String usuario;
 	
 	@NotNull
-	@Size(min = 7, max = 20)
 	private String senha;
 
 	public long getId() {
