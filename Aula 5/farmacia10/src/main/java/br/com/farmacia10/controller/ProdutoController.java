@@ -20,7 +20,7 @@ import br.com.farmacia10.repository.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produtos")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProdutoController {
 	
 	@Autowired
